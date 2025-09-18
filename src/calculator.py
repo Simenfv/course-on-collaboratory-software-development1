@@ -46,7 +46,19 @@ def subtract(a, b):
 
 def divide(a, b):
     # TODO: Implement the division function here
-    pass
+    """
+    Divide first number by second number.
+    Args:
+        a (float): Numerator
+        b (float): Denominator
+        Returns:
+        float: Result of a divided by b
+        Raises:
+        TypeError: If inputs are not numbers
+        ValueError: If division by zero is attempted"""
+    
+    validate_numbers(a, b)
+    return a/b
 
 
 def main():
@@ -54,7 +66,7 @@ def main():
     Simple interactive calculator for testing.
     """
     print("Simple Calculator")
-    print("Available operations: add, subtract")
+    print("Available operations: add, subtract, divide")
     print("Type 'quit' to exit")
 
     while True:
@@ -64,7 +76,7 @@ def main():
             print("Goodbye!")
             break
         # TODO: Add handling for divide operation here
-        if operation not in ["add", "subtract"]:
+        if operation not in ["add", "subtract", "divide"]:
             print("Invalid operation. Please use 'add' or 'subtract'")
             continue
 
@@ -79,6 +91,9 @@ def main():
                 result = subtract(a, b)
                 print(f"Result: {a} - {b} = {result}")
             # TODO: Add handling for divide operation here
+            elif operation == "divide":
+                result = divide(a, b)
+                print(f"Result: {a} / {b} = {result}")
         except ValueError:
             print("Please enter valid numbers")
         except TypeError as e:
